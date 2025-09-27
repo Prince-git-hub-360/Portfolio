@@ -30,10 +30,11 @@
                 <p><i class='bx bx-map'></i> Location: Bangaluru, India</p>
             </div>
 
+            <!-- Contact Form -->
             <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                 <button type="submit" class="btn-box">Send Message</button>
             </form>
 
@@ -45,10 +46,28 @@
                     rel="noopener noreferrer">
                     <i class='bx bxl-linkedin'></i>
                 </a>
-
                 <a href="#"><i class='bx bxl-github'></i></a>
             </div>
         </div>
     </section>
+
+    <!-- EmailJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("-ljUU2i9yoL8ssclo"); // ✅ Replace with your EmailJS Public Key
+        })();
+
+        document.querySelector(".contact-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            emailjs.sendForm("service_8qfussa", "template_8t5kdur", this)
+                .then(() => {
+                    alert("✅ Message sent successfully!");
+                    this.reset();
+                }, (err) => {
+                    alert("❌ Failed to send message: " + JSON.stringify(err));
+                });
+        });
+    </script>
 </body>
 </html>
