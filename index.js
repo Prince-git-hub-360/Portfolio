@@ -6,6 +6,7 @@ var options = {
     startDelay: 500,     // Delay before typing starts
     loop: true,          // Loop animation
     showCursor: true     // Show blinking cursor
+};
 
 // Initialize Typed.js
 var typed = new Typed("#typed-output", options);
@@ -26,4 +27,3 @@ setInterval(updateDateTime, 1000);
 
 // Run once at start
 updateDateTime();
-
